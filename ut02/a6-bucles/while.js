@@ -1,6 +1,5 @@
 'use strict'
 
-
 let numValido = NaN;
 let intentosValidos = 0;
 while (isNaN(numValido) || numValido < 1 || numValido > 20) {
@@ -8,19 +7,19 @@ while (isNaN(numValido) || numValido < 1 || numValido > 20) {
     numValido = Number(entrada);
     intentosValidos++;
 }
-console.log(`6. Entrada Válida`);
+console.log(`Entrada Válida`);
 console.log(`Número correcto: ${numValido}. Intentos necesarios: ${intentosValidos}`);
 
 
 let numeroSecreto = Math.floor(Math.random() * 100) + 1;
-let intentosAdivina = 0;
+let intentos = 0;
 let acertado = false;
-console.log(`7. Adivina el número (1 a 100)`);
-while (intentosAdivina < 7 && !acertado) {
-    let intentoUsr = Number(prompt(`Intento ${intentosAdivina + 1}/7. Introduce un número del 1 al 100:`));
+console.log(`Adivina el número del 1 al 100`);
+while (intentos < 7 && !acertado) {
+    let intentoUsr = Number(prompt(`Intento ${intentos + 1}. Introduce un número del 1 al 100:`));
     intentosAdivina++;
     if (intentoUsr === numeroSecreto) {
-        console.log(`¡Has acertado en el intento ${intentosAdivina}!`);
+        console.log(`¡Has acertado en el intento ${intentos}!`);
         acertado = true;
     } else if (intentoUsr < numeroSecreto) {
         console.log('El número secreto es mayor.');

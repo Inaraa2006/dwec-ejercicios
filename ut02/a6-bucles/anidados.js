@@ -1,6 +1,5 @@
 'use strict'
 
-
 let frase = prompt("Introduce una frase:").toLowerCase();
 let vocales = 0, consonantes = 0, espacios = 0;
 for (let char of frase) {
@@ -12,24 +11,23 @@ for (let char of frase) {
         espacios++;
     }
 }
-console.log(`10. Contador de vocales`);
+console.log(`Contador de vocales`);
 console.log(`Vocales: ${vocales}, Consonantes: ${consonantes}, Espacios: ${espacios}`);
 
 
-let palabra = prompt('Introduce una palabra para comprobar si es palíndromo:').toLowerCase().trim();
+let palabra = prompt("Introduce una palabra para comprobar si es palíndromo:").toLowerCase().trim();
 let palabraInvertida = '';
 for (let i = palabra.length - 1; i >= 0; i--) {
     palabraInvertida += palabra[i];
 }
-console.log(`11. Palíndromo`);
 console.log(`¿Es palíndromo?: ${palabra === palabraInvertida}`);
 
 
-let nFiguras = Number(prompt('Introduce el tamaño N para las figuras geométricas:'));
+let nFiguras = Number(prompt("Introduce el tamaño N para las figuras geométricas:"));
 let resultadoFiguras = '';
 
 
-resultadoFiguras += `12. Cuadrado hueco de ${nFiguras}x${nFiguras}\n`;
+resultadoFiguras += `Cuadrado hueco de ${nFiguras}x${nFiguras}\n`;
 for (let i = 1; i <= nFiguras; i++) {
     let fila = '';
     for (let j = 1; j <= nFiguras; j++) {
@@ -70,11 +68,11 @@ for (let candidato = 2; candidato <= nPrimos; candidato++) {
         contadorPrimos++;
     }
 }
-console.log(`13. Primos entre 2 y ${nPrimos} (Total: ${contadorPrimos})`);
+console.log(`Primos entre 2 y ${nPrimos} (Total: ${contadorPrimos})`);
 console.log(listaPrimos);
 
 
-console.log(`14. Tablas completas del 1 al 10`);
+console.log(`Tablas completas del 1 al 10`);
 for (let i = 1; i <= 10; i++) {
     console.group(`Tabla del ${i}`);
     for (let j = 1; j <= 10; j++) {
