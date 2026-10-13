@@ -1,3 +1,10 @@
+//El programa pide una cantidad en km 
+// y muestra su equivalencia en m, millas y millas naúticas.
+
+//Además, pide grados celcius y los muestra en F y K
+
+//Inara Mendoza Acosta, 12-10-2026
+
 'use strict'
 
 let km = Number(prompt("Introduce los km/h:"));

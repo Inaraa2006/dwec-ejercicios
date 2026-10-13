@@ -1,3 +1,8 @@
+//El programa pide tiempo en segundos y lo muestra así
+// h:mm:ss usando Math.trunc
+
+//Inara Mendoza Acosta, 12-10-2026
+
 'use strict'
 
 let totalSegundos = Number(prompt("Introduce los segundos:"));

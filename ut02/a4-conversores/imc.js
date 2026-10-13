@@ -1,3 +1,9 @@
+//El programa pide peso en kg y altura en cm y muestra
+// el IMC
+
+//Inara Mendoza Acosta, 12-10-2026
+
+
 'use strict'
 
 let peso = Number(prompt("Introduce tu peso en kg:"));

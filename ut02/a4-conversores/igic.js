@@ -1,3 +1,8 @@
+//El programa pide un precio sin impuestos y un tipo de IGIC
+// Muestra el importe del impuesto y el total
+
+//Inara Mendoza Acosta, 12-10-2026
+
 'use strict';
 
 /**

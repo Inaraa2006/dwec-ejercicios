@@ -1,3 +1,9 @@
+//El programa pide el salario bruto anual y el número de pagas
+// muestra el bruto mensual, la retención de IRPF, la cotización
+//  el neto mensual
+
+//Inara Mendoza Acosta, 12-10-2026
+
 'use strict'
 
 let salaroBrutoAnual = Number(prompt("Introduce el salario bruto anual:"));
