@@ -1,5 +1,3 @@
-# Casos de prueba - Actividad A4
-
 ## 1. Conversor de Unidades
 | Entrada (km / °C) | Esperado | Obtenido |
 | :--- | :--- | :--- |
