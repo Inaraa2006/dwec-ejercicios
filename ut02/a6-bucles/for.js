@@ -21,16 +21,16 @@ console.log(cadena1_100);
 console.log(`Múltiplos de 3 o 5: ${cadenaFiltrada}`);
 
 
-let nSuma = Number(prompt('Introduce un número para calcular la suma y media del 1 al N:'));
+let numeroSuma = Number(prompt('Introduce un número para calcular la suma y media del 1 al N:'));
 let suma = 0;
-for (let i = 1; i <= nSuma; i++) {
+for (let i = 1; i <= numeroSuma; i++) {
     suma += i;
 }
-let media = suma / nSuma;
-console.log(`Suma y media del 1 al ${nSuma}`);
+let media = suma / numeroSuma;
+console.log(`Suma y media del 1 al ${numeroSuma}`);
 
 
-let serieFib = [1, 1];
+const serieFib = [1, 1];
 for (let i = 2; i < 15; i++) {
     serieFib[i] = serieFib[i - 1] + serieFib[i - 2];
 }
@@ -38,7 +38,7 @@ console.log(`Sucesión de Fibonacci (15 términos)`);
 console.log(serieFib.join(', '));
 
 
-console.log(`Potencias de 2 (0 a 10)`);
+console.log(`Potencias de 2`);
 let acumuladorPotencia = 1;
 for (let i = 0; i <= 10; i++) {
     console.log(`2^${i} = ${acumuladorPotencia}`);
