@@ -17,7 +17,7 @@ let acertado = false;
 console.log(`Adivina el número del 1 al 100`);
 while (intentos < 7 && !acertado) {
     let intentoUsr = Number(prompt(`Intento ${intentos + 1}. Introduce un número del 1 al 100:`));
-    intentosAdivina++;
+    intentos++;
     if (intentoUsr === numeroSecreto) {
         console.log(`¡Has acertado en el intento ${intentos}!`);
         acertado = true;
