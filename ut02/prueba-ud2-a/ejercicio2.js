@@ -29,24 +29,20 @@ const SEGUNDOS_POR_MINUTO = 60;
 
 // ----- a) y b) ENTRADA ----------------------------------------------------
 const tamanoMb = Number(prompt("Introduce el tamaño del fichero:"))/* ① */ ;                                   // número de MB
-const velocidadTexto = prompt('Velocidad (Mbps):') /* ② */ ; 
+const velocidadTexto = prompt('Velocidad (Mbps):')??'100'; /* ② */ // '100' si cancela
 
-// '100' si cancela
-
-const velocidadMbps = /* ③ */ ;                              // texto -> número
+const velocidadMbps = Number(velocidadTexto); /* ③ */ // texto -> número
 
 // ----- c) CLÁUSULA DE GUARDA ----------------------------------------------
-if ( tamanoMb && velocidadTexto == '-'/* ④ */ ) {
+if ( isNaN(tamanoMb) || tamanoMb <= 0 || isNaN(velocidadMbps) || velocidadMbps <=0) { /* ④ */ 
   console.error('Error: el tamaño y la velocidad deben ser números positivos.');
-} else {
-  // ----- d) CÁLCULO --------------------------------------------------------
+   } else {
+// ----- d) CÁLCULO --------------------------------------------------------
   const segundosTotales = Math.round((tamanoMb * BITS_POR_BYTE) / velocidadMbps);
-  const minutos = /* ⑤ */  String(minutos).padStart(2, '0');   // minutos completos
-  const segundos = /* ⑥ */ segundosTotales % 60;  // segundos que sobran
-  const segundosTexto = /* ⑦ */ String(segundos).padStart(2, '0'); // siempre dos cifras: '05', '52'
-  const tamanoGb = /* ⑧ */ tamanoGb.toFixed(2);      // GB con dos decimales (texto)
-
-   let formatoM = 
+  const minutos =  Math.trunc(segundosTotales / SEGUNDOS_POR_MINUTO); /* ⑤ */ // minutos completos
+  const segundos = segundosTotales % SEGUNDOS_POR_MINUTO; /* ⑥ */ // segundos que sobran
+  const segundosTexto = String(segundos).padStart(2, '0'); /* ⑦ */ // siempre dos cifras: '05', '52'
+  const tamanoGb = (tamanoGb / MB_POR_GB).toFixed(2); /* ⑧ */ // GB con dos decimales (texto)
 
   // ----- e) SALIDA ---------------------------------------------------------
   console.log(`Fichero de ${tamanoMb} MB (${tamanoGb} GB)`);
