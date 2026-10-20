@@ -27,7 +27,7 @@ for (let i = 1; i <= numeroSuma; i++) {
     suma += i;
 }
 let media = suma / numeroSuma;
-console.log(`Suma y media del 1 al ${numeroSuma}`);
+console.log(`Suma y media del 1 al ${numeroSuma}, media: ${media} y suma: ${suma}`);
 
 
 const serieFib = [1, 1];
