@@ -5,21 +5,27 @@
  */
 
 function normalizarNombre (textoEntrada){
-    const palabras = textoEntrada.trim().split(' ');
+    const limpio = textoEntrada.trim();
+    const partes = limpio.split(' '); /*Acordarme de poner espacio porque sino me 
+    daba todo en mayúsculas porque JS dividía el texto letra por letra*/
 
     const palabrasNormalizadas = [];
     const iniciales = [];
 
-    for (const p of palabras){
+    for (const p of partes){
         if (p!=='') {
-            const normal = p.charAt(0).toUpperCase() + p.slice(1).toLowerCase();
-            palabrasNormalizadas.push(normal);
-            iniciales.push(p.charAt(0).toUpperCase()+'.');
+            const inicial = p.at(0).toUpperCase();
+            const resto = p.slice(1).toLowerCase();
+
+            const palabraFormateada = inicial + resto;
+            palabrasNormalizadas.push(palabraFormateada);
+            iniciales.push(`${inicial}.`);
         }
     }
 
     console.group("Nombre normalizado: ");
         console.log('Nombre limpio: ', palabrasNormalizadas.join(''));
+        console.log('Iniciales: ', iniciales.join(''));
         console.log('Número de palabras: ', palabrasNormalizadas.length);
     console.groupEnd();
 }
