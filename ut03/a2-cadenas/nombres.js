@@ -24,8 +24,8 @@ function normalizarNombre (textoEntrada){
     }
 
     console.group("Nombre normalizado: ");
-        console.log('Nombre limpio: ', palabrasNormalizadas.join(''));
-        console.log('Iniciales: ', iniciales.join(''));
+        console.log('Nombre limpio: ', palabrasNormalizadas.join(' '));
+        console.log('Iniciales: ', iniciales.join(' '));
         console.log('Número de palabras: ', palabrasNormalizadas.length);
     console.groupEnd();
 }
