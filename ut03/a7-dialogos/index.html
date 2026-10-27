@@ -3,15 +3,69 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>UD3 · A5</title>
+        <title>UD3 · A7</title>
         <link rel="stylesheet" href="estilos.css">
-        </head>
+    </head>
     <body>
-        <h1>UD3 · A7 · Diálogos propios</h1>
-        <p>Abre la consola (F12). Este mismo fichero se puede ejecutar con <code>node app.js</code>.</p>
-        
-        <div id="salida"></div>
+        <main class="container">
+            <h1>UD3 · A7 · Diálogos propios</h1>
+
+            <p id="mensaje" role="status"></p>
+
+            <section>
+                <h2>1. Prompt con valor por defecto</h2>
+                <button id="btnNativos">Recarga</button>
+                <div id="salidaNativos"></div>
+            </section>
+
+            <section>
+                <h2>2. Vaciar Lista con diálogo</h2>
+                <button id="btnVaciar">Vaciar lista</button>
+                <ul id="listaVaciar">
+                    <li>Elemento 1</li>
+                    <li>Elemento 2</li>
+                    <li>Elemento 3</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>3. Añadir Elemento con diálogo</h2>
+                <button id="btnAnadir">Añadir</button>
+                <ul id="listaAnadir">
+                    <li>Elemento inicial</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>4. Toast</h2>
+                <button id="btnToast">Probar Toast</button>
+            </section>
+
+            <section>
+                <h2>5. Notificación del Sistema</h2>
+                <button id="btnNotificacion">Mostrar notificación</button>
+            </section>
         </main>
-        <script src="nativos.js"></script>
+
+        <dialog id="dialogoVaciar">
+            <p>¿Estás seguro de que deseas vaciar la lista?</p>
+            <div class="dialog-buttons">
+                <button type="button" id="aceptarVaciar">Aceptar</button>
+                <button type="button" id="cancelarVaciar">Cancelar</button>
+            </div>
+        </dialog>
+
+        <dialog id="dialogoAnadir">
+            <form id="formAnadir">
+                <label for="nombreItem">Nombre del elemento:</label>
+                <input type="text" id="nombreItem" required>
+                <div class="dialog-buttons">
+                    <button type="submit">Aceptar</button>
+                    <button type="button" id="cancelarAnadir">Cancelar</button>
+                </div>
+            </form>
+        </dialog>
+
+        <script src="app.js"></script>
     </body>
 </html>

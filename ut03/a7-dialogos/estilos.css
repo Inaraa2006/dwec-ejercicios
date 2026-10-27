@@ -1,8 +1,58 @@
 body {
-    margin: 0;
+    background-color: white;
+}
+
+.container {
+    max-width: 600px;
+    background: white;
     padding: 2rem;
+    border-radius: 8px;
+}
+
+section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: #2b6cb0;
+}
+
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 1.5rem;
+    max-width: 400px;
+    width: 100%;
 }
 
 dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dialog-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#mensaje {
+    font-weight: bold;
+    text-decoration: underline;
 }
