@@ -37,6 +37,13 @@ body {
 .cabecera {
 	padding-bottom: .5rem;
 	border-bottom: 4px solid var(--rojo);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#logo {
+	height: 80px;
 }
 
 #titulo {
@@ -96,6 +103,7 @@ body {
 	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
 	/* El tapete es el elemento de referencia para colocar las cartas:
 	   ¿qué valor de position necesita? */
+	position: relative;
 }
 
 /*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
@@ -104,7 +112,15 @@ body {
    Pista: calc(var(--ancho-carta) + (var(--max-cartas) - 1) * var(--paso) + 30px)
    Dar también tamaño al tapete de sobrantes (#sobrantes) y a los
    receptores (.receptor) para que quepa una carta con holgura. */
+#inicial {
+	width: calc(var(--ancho-carta) + (var(--max-cartas) - 1) * var(--paso) + 30px);
+	height: calc(var(--alto-carta) + (var(--max-cartas) - 1) * var(--paso) + 30px);
+}
 
+#sobrantes, .receptor {
+	width: calc(var(--ancho-carta) + 20px);
+	height: calc(var(--alto-carta) + 20px);
+}
 
 /*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
 /* Estilo de las cartas (clase .carta, la añade JavaScript):
@@ -112,6 +128,14 @@ body {
    - posición absoluta respecto a su tapete
    - un margen para separarlas del borde del tapete
    - opcional: esquinas redondeadas y sombra */
+.carta {
+	width: var(--ancho-carta);
+	height: var(--alto-carta);
+	position: absolute;
+	margin: 10px;
+	border-radius: 6px;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
 
 
 /*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
@@ -119,7 +143,16 @@ body {
    - en la esquina inferior DERECHA del tapete
    - siempre por encima de las cartas (z-index)
    - que se lean bien sobre el fondo oscuro */
-
+.contador {
+	position: absolute;
+	right: 8px;
+	bottom: 8px;
+	z-index: 100;
+	color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+}
 
 /* Mensaje del tapete inicial antes de elegir modo */
 .aviso {
