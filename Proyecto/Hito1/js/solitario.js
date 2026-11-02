@@ -117,9 +117,19 @@ botonReiniciar.addEventListener("click", reiniciarPartida);
 // 1. Recorrer botonesModo (con forEach) y, para cada botón, registrar un
 //    evento click que llame a elegirModo pasándole el modo del botón.
 //    El modo está en su atributo data-modo: boton.dataset.modo
+botonesModo.forEach(function (boton) {
+	boton.addEventListener("click", function () {
+		elegirModo(boton.dataset.modo);
+	});
+});
 // 2. Botón Nuevo juego → nuevoJuego
+botonNuevo.addEventListener("click", nuevoJuego);
 // 3. Botón Finalizar partida → finalizarPartida
+botonFinalizar.addEventListener("click", finalizarPartida);
 // 4. Botón Aceptar de la ventana (id "cerrar_dialogo") → dialogoFin.close()
+document.getElementById("cerrar_dialogo").addEventListener("click", function () {
+	dialogoFin.close();
+});
 
 
 /* ===================== MODOS Y BOTONES DE CONTROL ===================== */
