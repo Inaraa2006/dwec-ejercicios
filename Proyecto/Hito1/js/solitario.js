@@ -42,6 +42,9 @@ const numeros = [];
 // Rellenar el array numeros con un bucle desde PRIMERA_CARTA hasta
 // ULTIMA_CARTA (ambas incluidas). Resultado: [9, 10, 11, 12].
 
+for (let i = PRIMERA_CARTA; i <= ULTIMA_CARTA; i++) {
+	numeros.push(i);
+}
 
 // Desplazamiento en píxeles (top y left) entre una carta y la anterior
 // en el tapete inicial.
@@ -273,17 +276,22 @@ function cargarTapeteInicial(mazo) {
 function setContador(contador, valor) {
 	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
 	// Pista: propiedad textContent.
+	contador.textContent = valor;
 }
 
 /** Suma 1 a un contador (se usará en el hito 2). */
 function incContador(contador) {
 	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
 	// Ojo: textContent es un texto; hay que convertirlo a número.
+	let valorActual = Number(contador.textContent);
+	setContador(contador, valorActual + 1);
 }
 
 /** Resta 1 a un contador (se usará en el hito 2). */
 function decContador(contador) {
 	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+		let valorActual = Number(contador.textContent);
+	setContador(contador, valorActual - 1);
 }
 
 
