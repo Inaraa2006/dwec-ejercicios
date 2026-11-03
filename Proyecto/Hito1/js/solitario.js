@@ -35,10 +35,9 @@ const MODOS = {
 
 // Números de carta que se usan en la partida.
 const numeros = [];
-/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
 // Rellenar el array numeros con un bucle desde PRIMERA_CARTA hasta
 // ULTIMA_CARTA (ambas incluidas). Resultado: [9, 10, 11, 12].
-
+/***CÓDIGO HECHO***/
 for (let i = PRIMERA_CARTA; i <= ULTIMA_CARTA; i++) {
 	numeros.push(i);
 }
@@ -110,7 +109,7 @@ let temporizador = null;      // identificador devuelto por setInterval
 // Ejemplo: el botón Reiniciar llama a reiniciarPartida al pulsarlo.
 botonReiniciar.addEventListener("click", reiniciarPartida);
 
-/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+/***CÓDIGO HECHO***/
 // 1. Recorrer botonesModo (con forEach) y, para cada botón, registrar un
 //    evento click que llame a elegirModo pasándole el modo del botón.
 //    El modo está en su atributo data-modo: boton.dataset.modo
@@ -191,7 +190,7 @@ function finalizarPartida() {
  * temporizadores.
  */
 function comenzarJuego() {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// 1. Quitar las cartas de la partida anterior y vaciar los mazos
 	//    (vaciarMesa).
 	// 2. Crear la baraja en mazoInicial (crearBaraja), barajarla y
@@ -201,6 +200,17 @@ function comenzarJuego() {
 	// 4. Ocultar el aviso (añadirle la clase "oculto"), activar los
 	//    botones Reiniciar y Finalizar y poner partidaEnCurso a true.
 	// 5. Arrancar el tiempo.
+	vaciarMesa();
+	mazoInicial = crearBaraja();
+	barajar(mazoInicial);
+	cargarTapeteInicial(mazoInicial);
+	ponerContadoresACero();
+	setContador(contInicial, mazoInicial.length);
+	aviso.classList.add ("oculto");
+	botonReiniciar.disabled = false;
+	botonFinalizar.disabled = false;
+	partidaEnCurso = true;
+	arrancarTiempo();
 }
 
 /**
@@ -208,10 +218,22 @@ function comenzarJuego() {
  * contadores ni el aviso, y vacía los arrays de los mazos.
  */
 function vaciarMesa() {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// Pista: tapete.querySelectorAll("img") devuelve las cartas de un
 	// tapete; carta.remove() quita un elemento del documento.
 	// ¡Cuidado! tapete.innerHTML = "" borraría también el contador.
+	todosLosTapetes.forEach(function (tapete) {
+		const cartas = tapete.querySelectorAll("img");
+		cartas.forEach(function (carta) {
+			carta.remove();
+		});
+	});
+	mazoInicial = [];
+	mazoSobrantes = [];
+	mazoReceptor1 = [];
+	mazoReceptor2 = [];
+	mazoReceptor3 = [];
+	mazoReceptor4 = [];
 }
 
 /** Pone a 0 los contadores de los seis tapetes y el de movimientos. */
@@ -231,7 +253,7 @@ function ponerContadoresACero() {
  */
 function crearBaraja() {
 	const mazo = [];
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// Con dos bucles anidados (palos y numeros), crear cada carta con
 	// document.createElement("img") y darle:
 	//   - src: RUTA_BARAJA + numero + "-" + palo + ".png"
@@ -266,7 +288,7 @@ function crearBaraja() {
  * @param {Array} mazo
  */
 function barajar(mazo) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// Algoritmo de Fisher-Yates (el mismo que en el juego de parejas, UT3).
 	// Referencia: https://es.wikipedia.org/wiki/Algoritmo_de_Fisher-Yates
 	// Recorrer el array desde el final
@@ -286,7 +308,7 @@ function barajar(mazo) {
  * @param {HTMLImageElement[]} mazo
  */
 function cargarTapeteInicial(mazo) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// Para cada carta (posición i):
 	//   - carta.style.top  = (i * paso) + "px"
 	//   - carta.style.left = (i * paso) + "px"
@@ -305,14 +327,14 @@ function cargarTapeteInicial(mazo) {
 
 /** Escribe un valor en un contador. */
 function setContador(contador, valor) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// Pista: propiedad textContent.
 	contador.textContent = valor;
 }
 
 /** Suma 1 a un contador (se usará en el hito 2). */
 function incContador(contador) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// Ojo: textContent es un texto; hay que convertirlo a número.
 	let valorActual = Number(contador.textContent);
 	setContador(contador, valorActual + 1);
@@ -320,7 +342,7 @@ function incContador(contador) {
 
 /** Resta 1 a un contador (se usará en el hito 2). */
 function decContador(contador) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 		let valorActual = Number(contador.textContent);
 	setContador(contador, valorActual - 1);
 }
@@ -335,7 +357,7 @@ function decContador(contador) {
  * que detener el anterior (detenerTiempo).
  */
 function arrancarTiempo() {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// 1. Detener el temporizador anterior.
 	// 2. segundos = 0 y mostrar el tiempo.
 	// 3. Guardar en temporizador el resultado de setInterval con una
@@ -351,7 +373,7 @@ function arrancarTiempo() {
 
 /** Detiene el temporizador si existe. */
 function detenerTiempo() {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// Si temporizador no es null: clearInterval(temporizador) y
 	// temporizador = null.
 	if (temporizador != null) {
@@ -377,7 +399,7 @@ function mostrarTiempo() {
  * @returns {string}
  */
 function formatearTiempo(total) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// Pista: Math.trunc() y la función dosCifras().
 	let segundos = Math.trunc(total % 60);
 	let minutos = Math.trunc((total % 3600) / 60);
