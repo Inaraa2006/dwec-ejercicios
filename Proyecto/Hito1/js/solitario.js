@@ -292,6 +292,12 @@ function cargarTapeteInicial(mazo) {
 	//   - carta.style.left = (i * paso) + "px"
 	//   - añadirla al tapete inicial con appendChild
 	// Al final, actualizar el contador del tapete inicial.
+	mazo.forEach(function (carta, i) {
+		carta.style.top = (i * paso) + "px";
+		carta.style.left = (i * paso) + "px";
+		tapeteInicial.appendChild(carta);
+	});
+	setContador(contInicial, mazo.length);
 }
 
 
@@ -334,6 +340,13 @@ function arrancarTiempo() {
 	// 2. segundos = 0 y mostrar el tiempo.
 	// 3. Guardar en temporizador el resultado de setInterval con una
 	//    función que, cada 1000 ms, sume 1 a segundos y muestre el tiempo.
+	detenerTiempo();
+	segundos = 0;
+	mostrarTiempo();
+	temporizador = setInterval(function () {
+		segundos++;
+		mostrarTiempo();
+	}, 1000);
 }
 
 /** Detiene el temporizador si existe. */
@@ -341,6 +354,10 @@ function detenerTiempo() {
 	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
 	// Si temporizador no es null: clearInterval(temporizador) y
 	// temporizador = null.
+	if (temporizador != null) {
+		clearInterval(temporizador);
+		temporizador = null;
+	}
 }
 
 /** Muestra el tiempo actual en su marcador. */
@@ -362,8 +379,10 @@ function mostrarTiempo() {
 function formatearTiempo(total) {
 	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
 	// Pista: Math.trunc() y la función dosCifras().
-
-	return "00:00:00";
+	let segundos = Math.trunc(total % 60);
+	let minutos = Math.trunc((total % 3600) / 60);
+	let horas = Math.trunc((total % 8400) / 3600);
+	return dosCifras(horas) + ":" + dosCifras(minutos) + ":" + dosCifras(segundos);
 }
 
 /** Devuelve el número con dos cifras: 7 → "07". */
