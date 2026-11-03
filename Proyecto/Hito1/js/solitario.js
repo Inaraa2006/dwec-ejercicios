@@ -1,5 +1,4 @@
 "use strict";
-
 /* =====================================================================
    SOLITARIO MANRIQUE · Hito 1 · PLANTILLA
    ---------------------------------------------------------------------
@@ -9,8 +8,6 @@
    No cambien los nombres de las variables ni de las funciones: el
    resto del juego (hitos 2 y 3) se construye sobre ellos.
    ===================================================================== */
-
-
 /* ===================== CONFIGURACIÓN DEL JUEGO ===================== */
 
 // Primera y última carta de cada palo. Para probar rápido se juega con
@@ -245,7 +242,21 @@ function crearBaraja() {
 	//       carta.setAttribute("data-palo", palo); ...
 	//   - draggable = false (en este hito ninguna carta se arrastra)
 	// y añadirla al array con mazo.push(carta).
+	palos.forEach(function(palo) {
+		numeros.forEach(function (numero) {
+			const carta = document.createElement("img");
+			carta.src = RUTA_BARAJA + numero + "-" + palo + ".png";
+			carta.alt = numero + " de " + NOMBRE_PALO[palo];
+			carta.className = "carta";
 
+			carta.dataset.palo = palo;
+			carta.dataset.numero = numero;
+			carta.dataset.color = COLOR_PALO[palo];
+			carta.draggable = false;
+
+			mazo.push(carta);
+		}); 
+	});
 	return mazo;
 }
 
