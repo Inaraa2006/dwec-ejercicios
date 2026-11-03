@@ -273,6 +273,10 @@ function barajar(mazo) {
 	// (i = mazo.length - 1 hasta 1) e intercambiar mazo[i] con mazo[j],
 	// siendo j un número entero aleatorio entre 0 e i:
 	//     Math.floor(Math.random() * (i + 1))
+	for (let i = mazo.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[mazo[i]], [mazo[j]] = [mazo[j]], [mazo[i]];
+	}
 }
 
 /**
