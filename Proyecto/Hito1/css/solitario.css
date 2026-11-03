@@ -74,6 +74,11 @@ body {
 	margin: .75rem 0;
 }
 
+#modo_actual, #contador_tiempo, #contador_movimientos {
+	color: var(--rojo);
+	font-weight: bold;
+}
+
 /* ---------- Mesa y tapetes ---------- */
 #mesa {
 	background-color: var(--lava);
@@ -152,6 +157,7 @@ body {
     padding: 2px 8px;
     border-radius: 12px;
     font-weight: bold;
+	background-color: rgba(0, 0, 0, 0.75);
 }
 
 /* Mensaje del tapete inicial antes de elegir modo */
