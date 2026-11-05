@@ -160,7 +160,7 @@ function reiniciarPartida() {
 
 /** Vuelve a la pantalla inicial: mesa vacía y ningún modo elegido. */
 function nuevoJuego() {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// 1. Detener el tiempo y vaciar la mesa.
 	// 2. modo = null y partidaEnCurso = false.
 	// 3. Escribir "sin elegir" en textoModo y quitar la clase "active"
@@ -168,6 +168,20 @@ function nuevoJuego() {
 	// 4. Poner los contadores a 0 y el tiempo a 00:00:00.
 	// 5. Desactivar los botones Reiniciar y Finalizar (propiedad disabled).
 	// 6. Volver a mostrar el aviso (quitarle la clase "oculto").
+	detenerTiempo();
+	vaciarMesa();
+	modo = null;
+	partidaEnCurso = false;
+	textoModo.textContent = "sin elegir";
+	botonesModo.forEach(function (boton) {
+		boton.classList.remove("active");
+	});
+	ponerContadoresACero();
+	segundos = 0;
+	mostrarTiempo();
+	botonReiniciar.disabled = true;
+	botonFinalizar.disabled = true;
+	aviso.classList.remove("oculto");
 }
 
 /**
