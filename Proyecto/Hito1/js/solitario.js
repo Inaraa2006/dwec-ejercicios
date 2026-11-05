@@ -136,13 +136,19 @@ document.getElementById("cerrar_dialogo").addEventListener("click", function () 
  * @param {string} nuevoModo  "color", "alterna" o "palo"
  */
 function elegirModo(nuevoModo) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// 1. Guardar nuevoModo en la variable modo.
 	// 2. Escribir el nombre del modo (MODOS[modo]) en textoModo.
 	// 3. Marcar como activo SOLO el botón del modo elegido: añadir la
 	//    clase "active" a ese botón y quitársela a los demás.
 	//    Pista: boton.classList.toggle("active", condicion)
 	// 4. Llamar a comenzarJuego().
+	modo = nuevoModo;
+	textoModo.textContent = MODOS[modo];
+	botonesModo.forEach(function (boton) {
+		boton.classList.toggle("active", boton.dataset.modo === modo);
+	});
+	comenzarJuego();
 }
 
 /** Vuelve a barajar y repartir en el mismo modo. */
