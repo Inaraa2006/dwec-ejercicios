@@ -190,7 +190,7 @@ function nuevoJuego() {
  * Nuevo juego.
  */
 function finalizarPartida() {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CÓDIGO HECHO***/
 	// 1. Si no hay partida en curso, no hacer nada (return).
 	// 2. Detener el tiempo, partidaEnCurso = false y desactivar el botón
 	//    Finalizar.
