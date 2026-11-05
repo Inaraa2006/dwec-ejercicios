@@ -198,6 +198,22 @@ function finalizarPartida() {
 	//    movimientos y cuántas cartas hay en los receptores de cuántas
 	//    tiene la baraja. Ejemplo: "Cartas colocadas: 0 de 16".
 	// 4. Abrir la ventana: dialogoFin.showModal()
+	if (!partidaEnCurso) {
+		return;
+	};
+	detenerTiempo();
+	partidaEnCurso = false;
+	botonFinalizar.disabled = true;
+
+	let cartasColocadas = mazoReceptor1.length + mazoReceptor2.length + 
+	mazoReceptor3.length + mazoReceptor4.length;
+	let totalCartas = mazoInicial.length + mazoSobrantes.length + cartasColocadas;
+
+	resumenFin.innerHTML = "Modo: " + "<strong>" + MODOS[modo] + "</strong>" + "<br>" 
+		+ "Tiempo: " + "<strong>" + formatearTiempo(segundos) + "</strong>" + "<br>" 
+		+ "Movimientos: " + "<strong>" + contMovimientos.textContent + "</strong>" + "<br>" 
+		+ "Cartas colocadas: " + "<strong>" + cartasColocadas + " de " + totalCartas + "</strong>";
+	dialogoFin.showModal();
 }
 
 
