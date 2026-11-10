@@ -1,0 +1,203 @@
+/* =====================================================================
+   SOLITARIO MANRIQUE · Hoja de estilos (PLANTILLA)
+   Pueden cambiar colores, fuentes y tamaños. Las zonas marcadas con
+   CODIGO son obligatorias.
+   ===================================================================== */
+
+/* Variables CSS: se usan con var(--nombre) */
+:root {
+	--rojo: #d4271e;
+	--negro: #1e1e1e;
+	--cal: #f6f1e7;
+	--lava: #2f2b28;
+	--picon: #45403b;          /* color de los tapetes */
+	--ancho-carta: 80px;
+	--alto-carta: 113px;
+	--paso: 5px;               /* debe coincidir con la variable paso de solitario.js */
+	--max-cartas: 48;
+}
+
+body {
+	background-color: var(--cal);
+	color: var(--negro);
+	font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.central {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+/* ---------- Cabecera ---------- */
+/***CÓDIGO HECHO***/
+/* Conseguir que el título quede a la izquierda y el logo a la derecha,
+   alineados verticalmente. Pista: display: flex en .cabecera.
+   Limitar la altura del logo (#logo) para que no ocupe toda la página. */
+.cabecera {
+	padding-bottom: .5rem;
+	border-bottom: 4px solid var(--rojo);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#logo {
+	height: 80px;
+}
+
+#titulo {
+	margin: 0;
+	color: var(--rojo);
+	font-weight: 700;
+}
+
+/* ---------- Selección de modo ---------- */
+.modos {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: .5rem;
+	margin: 1rem 0 .5rem;
+}
+
+.modos-titulo {
+	font-weight: 600;
+}
+
+/* ---------- Marcadores ---------- */
+#marcadores {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem 2rem;
+	font-size: 1.15rem;
+	margin: .75rem 0;
+}
+
+#modo_actual, #contador_tiempo, #contador_movimientos {
+	color: var(--rojo);
+	font-weight: bold;
+}
+
+/* ---------- Mesa y tapetes ---------- */
+#mesa {
+	background-color: var(--lava);
+	border-radius: 12px;
+	padding: 1rem;
+	display: grid;
+	gap: 1rem;
+}
+
+.tapetes_superiores {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.tapetes_receptores {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1rem;
+}
+
+.tapete {
+	background-color: var(--picon);
+	border: 2px dashed rgba(255, 255, 255, .35);
+	border-radius: 10px;
+	min-height: calc(var(--alto-carta) + 30px);
+	/***CÓDIGO HECHO***/
+	/* El tapete es el elemento de referencia para colocar las cartas:
+	   ¿qué valor de position necesita? */
+	position: relative;
+}
+
+/***CÓDGIO HECHO***/
+/* Dar tamaño al tapete inicial (#inicial) para que quepa la escalera
+   completa de 48 cartas: una carta más 47 desplazamientos, más un margen.
+   Pista: calc(var(--ancho-carta) + (var(--max-cartas) - 1) * var(--paso) + 30px)
+   Dar también tamaño al tapete de sobrantes (#sobrantes) y a los
+   receptores (.receptor) para que quepa una carta con holgura. */
+#inicial {
+	width: calc(var(--ancho-carta) + (var(--max-cartas) - 1) * var(--paso) + 30px);
+	height: calc(var(--alto-carta) + (var(--max-cartas) - 1) * var(--paso) + 30px);
+}
+
+#sobrantes, .receptor {
+	width: calc(var(--ancho-carta) + 20px);
+	height: calc(var(--alto-carta) + 20px);
+}
+
+/***CÓDIGO HECHO***/
+/* Estilo de las cartas (clase .carta, la añade JavaScript):
+   - tamaño fijo: var(--ancho-carta) × var(--alto-carta)
+   - posición absoluta respecto a su tapete
+   - un margen para separarlas del borde del tapete
+   - opcional: esquinas redondeadas y sombra */
+.carta {
+	width: var(--ancho-carta);
+	height: var(--alto-carta);
+	position: absolute;
+	margin: 10px;
+	border-radius: 6px;
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+
+/***CÓDIGO HECHO***/
+/* Contadores de los tapetes (clase .contador):
+   - en la esquina inferior DERECHA del tapete
+   - siempre por encima de las cartas (z-index)
+   - que se lean bien sobre el fondo oscuro */
+.contador {
+	position: absolute;
+	right: 8px;
+	bottom: 8px;
+	z-index: 100;
+	color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: bold;
+	background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* Mensaje del tapete inicial antes de elegir modo */
+.aviso {
+	margin: 0;
+	padding: 6rem 1.5rem;
+	color: rgba(255, 255, 255, .8);
+	font-size: 1.1rem;
+	text-align: center;
+}
+
+/* Clase para ocultar elementos desde JavaScript */
+.oculto {
+	display: none;
+}
+
+/* ---------- Botones de control ---------- */
+.controles {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	margin-top: 1rem;
+}
+
+/* ---------- Ventana de fin de partida ---------- */
+.dialogo {
+	border: none;
+	border-top: 6px solid var(--rojo);
+	border-radius: 12px;
+	padding: 1.5rem 2rem;
+	text-align: center;
+}
+
+.dialogo::backdrop {
+	background-color: rgba(0, 0, 0, .55);
+}
+
+/* ---------- Pantallas estrechas ---------- */
+@media (max-width: 700px) {
+	.tapetes_receptores {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
