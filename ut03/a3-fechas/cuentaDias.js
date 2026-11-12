@@ -17,3 +17,10 @@ function mostrarCuentaAtras(fechaObjetivo, nombreEvento) {
 
 mostrarCuentaAtras(fin1Eval, "Fin de la 1ª Evaluación (18 dic 2026)");
 mostrarCuentaAtras(finClases, "Fin de clases en el centro (5 feb 2027)");
+
+
+
+
+
+/*Escribir en #precio, #fecha y #faltan con textContent y cambiar document.title como indica el
+comentario*/

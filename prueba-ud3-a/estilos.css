@@ -1,0 +1,5 @@
+body { font-family: system-ui, sans-serif; max-width: 46rem; margin: 2rem auto; padding: 0 1rem; background: #fff; color: #222; }
+body[data-tema="oscuro"] { background: #1e1e1e; color: #eee; }
+#reloj, #cuenta, #crono { font-size: 2.5rem; font-variant-numeric: tabular-nums; }
+button { margin-right: .5rem; padding: .4rem .9rem; }
+.error { color: #b00020; }
