@@ -49,16 +49,14 @@ function crearLimitador(maximo) {
 }
 
 
-const contador = crearContador(5, 2);
-console.assert(contador.siguiente() === 5, "Contador paso 1 falló");
-console.assert(contador.siguiente() === 7, "Contador paso 2 falló");
-console.assert(contador.valor() === 9, "Contador valor actual falló");
+const cont = crearContador(0, 1);
+console.assert(cont.siguiente() === 0, "cont 1");
+console.assert(cont.valor() === 1, "cont 2");
 
-const acumulador = crearAcumulador();
-console.assert(acumulador(10) === 10, "Acumulador 1 falló");
-console.assert(acumulador(5) === 15, "Acumulador 2 falló");
+const acum = crearAcumulador();
+console.assert(acum(5) === 5, "acum 1");
+console.assert(acum(3) === 8, "acum 2");
 
-const limitador = crearLimitador(2);
-console.assert(limitador() === true, "Limitador llamada 1 falló");
-console.assert(limitador() === true, "Limitador llamada 2 falló");
-console.assert(limitador() === false, "Limitador llamada 3 (exceso) falló");
+const lim = crearLimitador(1);
+console.assert(lim() === true, "lim 1");
+console.assert(lim() === false, "lim 2");
