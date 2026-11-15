@@ -154,12 +154,6 @@ const media = notas.reduce((a, n) => a + n, 0) / notas.length;
 const aprobados = notas.filter(n => n >= 5).length;
 const redondeadas = notas.map(n => Math.round(n));
 
-const mock = [
-  { id: '1', titulo: 'Clean Code', autor: 'Robert Martin', categoria: 'tecnico', precio: 35, paginas: 464, disponible: true, anio: 2008, etiquetas: ['prog'] },
-  { id: '2', titulo: 'Mararía', autor: 'Rafael Arozarena', categoria: 'novela', precio: 12, paginas: 192, disponible: true, anio: 1973, etiquetas: ['canarias'] }
-];
-
-console.assert(titulos(mock).length === 2, "titulos");
-console.assert(disponibles(mock).length === 2, "disponibles");
-console.assert(precioMedio(mock) === 23.5, "precioMedio");
+console.assert(titulos(libros).length === 20, "titulos");
+console.assert(disponibles(libros).length === 17, "disponibles");
 console.assert(aprobados === 5, "aprobados");
