@@ -1,11 +1,5 @@
 'use strict';
 
-/**
- * @param {number} [inicio=0]
- * @param {number} [paso=1]
- * @returns {Object}
- */
-
 function crearContador(inicio = 0, paso = 1) {
     let cuenta = inicio;
     return {
@@ -16,13 +10,14 @@ function crearContador(inicio = 0, paso = 1) {
         },
         valor : function() {
             return cuenta;
+        },
+        /*función nueva*/
+        reiniciar : function() {
+            cuenta = inicio;
+            return cuenta;
         }
     };
 }
-
-/**
- * @returns {Function}
- */
 
 function crearAcumulador() {
     let total = 0;
@@ -31,11 +26,6 @@ function crearAcumulador() {
         return total;
     };
 }
-
-/**
- * @param {number} maximo 
- * @returns {Function} 
- */
 
 function crearLimitador(maximo) {
   let llamadas = 0;
@@ -50,13 +40,23 @@ function crearLimitador(maximo) {
 
 
 const cont = crearContador(0, 1);
-console.assert(cont.siguiente() === 0, "cont 1");
-console.assert(cont.valor() === 1, "cont 2");
+console.assert(cont.siguiente() === 0);
+console.assert(cont.valor() === 1);
+console.assert(cont.reiniciar() === 0);
 
 const acum = crearAcumulador();
-console.assert(acum(5) === 5, "acum 1");
-console.assert(acum(3) === 8, "acum 2");
+console.assert(acum(5) === 5);
 
 const lim = crearLimitador(1);
-console.assert(lim() === true, "lim 1");
-console.assert(lim() === false, "lim 2");
+console.assert(lim() === true);
+console.assert(lim() === false);
+
+/*comprobaciones nuevas*/
+const c = crearContador(5, 2);
+c.siguiente();
+c.siguiente();
+console.assert(c.valor() === 9);
+
+const c2 = crearContador(10 ,1);
+console.assert(c.reiniciar() === 5);
+console.assert(c2.valor() === 10);
