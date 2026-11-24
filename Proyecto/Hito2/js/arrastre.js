@@ -45,17 +45,26 @@ function mazoDe(tapete) {
 
 /** Devuelve el contador (span) de un tapete. */
 function contadorDe(tapete) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO HECHO***/
 	// Igual que mazoDe, pero devolviendo contInicial, contSobrantes,
 	// contReceptor1 ... contReceptor4.
+	switch (tapete.id) {
+		case "inicial": return contInicial;
+		case "sobrantes": return contSobrantes;
+		case "receptor1": return contReceptor1;
+		case "receptor2": return contReceptor2;
+		case "receptor3": return contReceptor3;
+		case "receptor4": return contReceptor4;
+	}
 }
 
 /** Devuelve la carta de arriba de un mazo, o undefined si está vacío. */
 function cartaDeArriba(mazo) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO HECHO***/
 	// La carta de arriba es la ÚLTIMA del array.
 	// Pista: ¿qué posición tiene el último elemento de un array?
 	// (Si el array está vacío, mazo[-1] ya devuelve undefined.)
+	return mazo[mazo.length -1];
 }
 
 /** true si el tapete es uno de los cuatro receptores. (YA HECHA) */
@@ -88,6 +97,25 @@ function actualizarArrastrables() {
 	//   Si no es undefined, ponerle draggable = true.
 	//
 	// Paso 4. Lo mismo con mazoSobrantes.
+	todosLosTapetes.forEach(function (tapete) {
+		tapete.querySelectorAll(".carta").forEach(function (carta) {
+			carta.draggable = false;
+		});
+	});
+
+	if (!partidaEnCurso) {
+		return;
+	}
+
+	const arribaInicial = cartaDeArriba(mazoInicial);
+	if (arribaInicial) {
+		arribaInicial.draggable = true;
+	}
+
+	const arribaSobrantes = cartaDeArriba(mazoSobrantes);
+	if (arribaSobrantes) {
+		arribaSobrantes.draggable = true;
+	}
 }
 
 
