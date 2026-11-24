@@ -315,7 +315,7 @@ function crearBaraja() {
 			carta.draggable = false;
 			/*Hito 2*/
 			carta.addEventListener("dragstart", alEmpezarArrastre);
-			carta.addEventListener("dragstart", alTerminarArrastre);
+			carta.addEventListener("dragend", alTerminarArrastre);
 
 			mazo.push(carta);
 		}); 

@@ -10,8 +10,9 @@
 
 /* Carta mientras se arrastra (⚽ PELOTAS: .arrastrando) */
 .carta.arrastrando {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO HECHO***/
 	/* Semitransparente: propiedad opacity */
+	opacity: 0.3;
 }
 
 /* Tapete sobre el que está la carta (⚽ PELOTAS: .sobre) */

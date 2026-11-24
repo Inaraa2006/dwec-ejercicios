@@ -126,15 +126,18 @@ function actualizarArrastrables() {
 
 /** dragstart: empieza el arrastre de una carta. */
 function alEmpezarArrastre(evento) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO HECHO***/
 	// ⚽ PELOTAS: empezarArrastre. Es igual: guardar en dataTransfer el
 	// id de la carta y añadirle la clase "arrastrando".
+	evento.dataTransfer.setData("text/plain", evento.target.id);
+	evento.target.classList.add("arrastrando");
 }
 
 /** dragend: termina el arrastre, se haya soltado bien o no. */
 function alTerminarArrastre(evento) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO HECHO***/
 	// ⚽ PELOTAS: terminarArrastre. Quitar la clase "arrastrando".
+	evento.target.classList.remove("arrastrando");
 }
 
 
