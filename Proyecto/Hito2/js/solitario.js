@@ -203,6 +203,7 @@ function finalizarPartida() {
 	};
 	detenerTiempo();
 	partidaEnCurso = false;
+	actualizarArrastrables();
 	botonFinalizar.disabled = true;
 
 	let cartasColocadas = mazoReceptor1.length + mazoReceptor2.length + 
@@ -247,6 +248,7 @@ function comenzarJuego() {
 	botonFinalizar.disabled = false;
 	partidaEnCurso = true;
 	arrancarTiempo();
+	actualizarArrastrables();
 }
 
 /**
@@ -311,6 +313,9 @@ function crearBaraja() {
 			carta.dataset.numero = numero;
 			carta.dataset.color = COLOR_PALO[palo];
 			carta.draggable = false;
+			/*Hito 2*/
+			carta.addEventListener("dragstart", alEmpezarArrastre);
+			carta.addEventListener("dragstart", alTerminarArrastre);
 
 			mazo.push(carta);
 		}); 
