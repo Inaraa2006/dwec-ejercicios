@@ -17,8 +17,10 @@
 
 /* Tapete sobre el que está la carta (⚽ PELOTAS: .sobre) */
 .tapete.resaltado {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO HECHO***/
 	/* Que se note: borde, sombra (box-shadow) o color de fondo */
+	border: 2px solid #ffd43b;
+	box-shadow: 0 0 12px rgba(255, 212, 59, 0.45);
 }
 
 /* Mejora: jugada válida / no válida (no solo color: también el borde) */

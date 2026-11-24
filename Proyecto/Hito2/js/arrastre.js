@@ -148,39 +148,53 @@ function alTerminarArrastre(evento) {
 const tapetesDestino = [tapeteSobrantes, tapeteReceptor1, tapeteReceptor2,
 	tapeteReceptor3, tapeteReceptor4];
 
-/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+/***CODIGO HECHO***/
 // ⚽ PELOTAS: cestas.forEach(...). Recorran tapetesDestino y registren en
 // cada tapete los eventos dragenter, dragover, dragleave y drop con las
 // funciones alEntrar, alPasarPorEncima, alSalir y alSoltar.
 // UNA sola función por evento para los cinco tapetes.
 
+tapetesDestino.forEach(function (tapete) {
+	tapete.addEventListener("dragenter", alEntrar);
+	tapete.addEventListener("dragover", alPasarPorEncima);
+	tapete.addEventListener("dragleave", alSalir);
+	tapete.addEventListener("drop", alSoltar);
+});
+
 
 /** dragenter: la carta entra en el tapete. */
 function alEntrar(evento) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO HECHO***/
 	// ⚽ PELOTAS: entrar. preventDefault() y añadir la clase "resaltado"
 	// al tapete. Recuerden: el tapete es evento.currentTarget.
+	evento.preventDefault();
+	evento.currentTarget.classList.add("resaltado");
 }
 
 /** dragover: la carta está encima del tapete. */
 function alPasarPorEncima(evento) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO HECHO***/
 	// ⚽ PELOTAS: pasarPorEncima. ¡Sin esto no se puede soltar!
+	evento.preventDefault();
 }
 
 /** dragleave: la carta sale del tapete. */
 function alSalir(evento) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO HECHO***/
 	// ⚽ PELOTAS: salir. Quitar la clase "resaltado".
 	// Detalle nuevo: si pasan del hueco del tapete a una carta del mismo
 	// tapete, también salta dragleave y el resaltado «parpadea». Para
 	// evitarlo, empiecen la función con:
 	//   if (evento.currentTarget.contains(evento.relatedTarget)) return;
+	if (evento.currentTarget.contains(evento.relatedTarget)) {
+		return;
+	}
+	evento.currentTarget.classList.remove("resaltado");
 }
 
 /** drop: se suelta la carta sobre el tapete. */
 function alSoltar(evento) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!!  empezado ***/ 
 	// ⚽ PELOTAS: soltar. La estructura es la misma:
 	//   1. preventDefault(); tapeteDestino = evento.currentTarget;
 	//      quitarle la clase "resaltado".
@@ -190,6 +204,9 @@ function alSoltar(evento) {
 	//   4. Si esMovimientoValido(carta, tapeteOrigen, tapeteDestino),
 	//      llamar a moverCarta(carta, tapeteOrigen, tapeteDestino).
 	//      Si no es válido, no se hace nada: la carta se queda donde estaba.
+	evento.preventDefault();
+	const tapeteDestino = evento.currentTarget;
+	tapeteDestino.classList.remove("resaltado");
 }
 
 
