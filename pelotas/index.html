@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Drag & Drop - Clasificando pelotas</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <h1>Clasificando pelotas</h1>
+  <p>Arrastren cada pelota a la cesta de su color, en orden del 1 al 5.</p>
+
+  <!-- Cestas: zonas donde se SUELTA (destino) -->
+  <div id="cestas">
+    <div class="cesta" data-color="rojo">ROJO</div>
+    <div class="cesta" data-color="azul">AZUL</div>
+  </div>
+
+  <!-- Montón: aquí JS crea las pelotas que se ARRASTRAN (origen) -->
+  <div id="monton"></div>
+
+  <p id="mensaje"></p>
+
+  <!-- Registro: muestra los eventos que se van disparando -->
+  <h3>Registro de eventos</h3>
+  <ul id="registro"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 30px;
+}
+
+/* ---------- Zonas ---------- */
+#cestas,
+#monton {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+#monton {
+  border: 2px dashed #aaa;
+  padding: 10px;
+  min-height: 70px;
+}
+
+.cesta {
+  width: 120px;
+  min-height: 120px;
+  border: 3px solid;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cesta[data-color="rojo"] { border-color: red; }
+.cesta[data-color="azul"] { border-color: blue; }
+
+/* ---------- Pelotas ---------- */
+.pelota {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  line-height: 50px;
+  text-align: center;
+  display: inline-block;
+  margin: 3px;
+  cursor: grab;
+}
+
+.rojo { background: red; }
+.azul { background: blue; }
+
+/* ---------- Clases que añade JavaScript ---------- */
+.arrastrando { opacity: 0.3; }          /* durante dragstart */
+.sobre       { background: #fff3b0; }   /* durante dragenter */
+.error       { background: #ffb3b3; }   /* drop no válido */
+
+/* ---------- Registro ---------- */
+#registro {
+  font-family: monospace;
+  background: #222;
+  color: #0f0;
+  padding: 10px 30px;
+  height: 150px;
+  overflow: auto;
+}
