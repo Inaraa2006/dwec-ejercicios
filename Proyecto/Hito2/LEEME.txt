@@ -1,0 +1,38 @@
+SOLITARIO MANRIQUE · HITO 2 · PLANTILLA
+========================================
+
+Esta plantilla NO sustituye a su hito 1: se añade a él.
+
+1. Hagan una copia de la carpeta de su hito 1 y trabajen sobre la copia.
+
+2. Copien en ella los dos ficheros nuevos:
+       js/arrastre.js
+       css/arrastre.css
+
+3. En solitario.html, enlácenlos DESPUÉS de los del hito 1:
+       <link rel="stylesheet" href="css/solitario.css">
+       <link rel="stylesheet" href="css/arrastre.css">        <- NUEVO
+       ...
+       <script src="js/solitario.js"></script>
+       <script src="js/arrastre.js"></script>                 <- NUEVO
+
+4. En js/solitario.js solo hay que añadir TRES cosas:
+
+   a) En crearBaraja(), justo después de  carta.draggable = false;
+          carta.addEventListener("dragstart", alEmpezarArrastre);
+          carta.addEventListener("dragend", alTerminarArrastre);
+
+   b) Al final de comenzarJuego():
+          actualizarArrastrables();
+
+   c) En finalizarPartida(), después de  partidaEnCurso = false;
+          actualizarArrastrables();
+
+5. Completen js/arrastre.js en el orden de sus secciones (1 a 7) y
+   css/arrastre.css. Las zonas que hay que programar están marcadas con
+       /*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+   y las marcadas con ⚽ PELOTAS se resuelven como en el modelo de
+   las pelotas y las cestas.
+
+Abran la consola (F12): mientras arrastre.js esté incompleto la página
+funciona como en el hito 1, sin errores, pero las cartas no se mueven.

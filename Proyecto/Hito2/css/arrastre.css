@@ -1,0 +1,32 @@
+/* =====================================================================
+   SOLITARIO MANRIQUE · Hito 2 · Estilos del arrastre · PLANTILLA
+   Se enlaza DESPUÉS de solitario.css.
+   ===================================================================== */
+
+/* La carta que se puede coger muestra la «mano» */
+.carta[draggable="true"] {
+	cursor: grab;
+}
+
+/* Carta mientras se arrastra (⚽ PELOTAS: .arrastrando) */
+.carta.arrastrando {
+	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/* Semitransparente: propiedad opacity */
+}
+
+/* Tapete sobre el que está la carta (⚽ PELOTAS: .sobre) */
+.tapete.resaltado {
+	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/* Que se note: borde, sombra (box-shadow) o color de fondo */
+}
+
+/* Mejora: jugada válida / no válida (no solo color: también el borde) */
+.tapete.valido {
+	border: 3px solid #3fbf5f;
+	box-shadow: 0 0 0 4px rgba(63, 191, 95, .45);
+}
+
+.tapete.invalido {
+	border: 3px dashed var(--rojo);
+	box-shadow: 0 0 0 4px rgba(212, 39, 30, .45);
+}
