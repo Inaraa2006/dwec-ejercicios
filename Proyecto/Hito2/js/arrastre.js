@@ -85,7 +85,7 @@ function esReceptor(tapete) {
 // después de cada movimiento y al finalizar.
 
 function actualizarArrastrables() {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO***/
 	// Paso 1. Poner TODAS las cartas de la mesa a draggable = false.
 	//   Pista: recorran todosLosTapetes con forEach y, dentro, las cartas
 	//   de cada tapete: tapete.querySelectorAll(".carta").forEach(...)
