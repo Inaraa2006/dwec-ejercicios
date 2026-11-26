@@ -259,27 +259,37 @@ function cumpleReglaModo(carta, cartaArriba) {
 		// Escalera de color: mismo color (YA HECHO, de ejemplo)
 		return carta.dataset.color === cartaArriba.dataset.color;
 	}
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO HECHO***/
 	// modo "alterna": color CONTRARIO → ¿qué operador es «distinto»?
+	if (modo === "alterna") {
+		return carta.dataset.color !== cartaArriba.dataset.color;
+	}
 	// modo "palo":    mismo PALO      → comparen dataset.palo
+	if (modo === "palo") {
+		return carta.dataset.palo === cartaArriba.dataset.palo;
+	}
 	return false;
 }
 
 /** true si la carta se puede dejar en un receptor que tiene ese mazo. */
 function aceptaReceptor(carta, mazoReceptor) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO HECHO***/
 	// Paso 1. numero = Number(carta.dataset.numero)
 	//         cartaArriba = cartaDeArriba(mazoReceptor)
-	//
+	const numero = Number(carta.dataset.numero);
+	const cartaArriba = cartaDeArriba(mazoReceptor);
 	// Paso 2. Receptor VACÍO (cartaArriba === undefined):
 	//         solo vale si numero es 12.
-	//
+	if (cartaArriba === undefined) {
+		return numero === 12;
+	}
 	// Paso 3. Receptor con cartas: tienen que cumplirse las DOS cosas
 	//         (operador &&):
 	//         - numero es exactamente uno menos que el de cartaArriba
 	//           (en las pelotas era pelotasDentro + 1; aquí, - 1)
 	//         - cumpleReglaModo(carta, cartaArriba)
-	return false;
+	const numeroArriba = Number(cartaArriba.dataset.numero);
+	return numero === numeroArriba - 1 && cumpleReglaModo(carta, cartaArriba);
 }
 
 /**
@@ -290,14 +300,25 @@ function aceptaReceptor(carta, mazoReceptor) {
 function esMovimientoValido(carta, tapeteOrigen, tapeteDestino) {
 	if (!partidaEnCurso) return false;            // sin partida no se juega (YA HECHO)
 	if (tapeteOrigen === tapeteDestino) return false;  // soltar en su propio tapete (YA HECHO)
-
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+	/***CODIGO HECHO***/
 	// 3. Si el origen es un receptor → false (esReceptor).
+	if (esReceptor(tapeteOrigen)) {
+		return false;
+	}
 	// 4. Si la carta NO es la de arriba de su mazo → false
 	//    (comparen cartaDeArriba(mazoDe(tapeteOrigen)) con carta).
+	if (cartaDeArriba(mazoDe(tapeteOrigen)) !== carta) {
+		return false;
+	}
 	// 5. Si el destino es tapeteSobrantes → vale solo si el origen es
 	//    tapeteInicial (return tapeteOrigen === tapeteInicial;).
+	if (tapeteDestino === tapeteSobrantes) {
+		return tapeteOrigen === tapeteInicial;
+	}
 	// 6. Si el destino es un receptor → return aceptaReceptor(carta, mazoDe(tapeteDestino));
+	if (esReceptor(tapeteDestino)) {
+		return aceptaReceptor(carta, mazoDe(tapeteDestino));
+	}
 	// 7. En cualquier otro caso (el tapete inicial) → false.
 	return false;
 }
@@ -318,12 +339,20 @@ modo = "color";
 console.assert(cumpleReglaModo(onceCac, doceDia) === true, "color: 11 rojo sobre 12 rojo");
 console.assert(cumpleReglaModo(onceCam, doceDia) === false, "color: 11 negro sobre 12 rojo");
 
-/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! ***/
+/***CODIGO HECHO***/
 // Añadan al menos:
 //  - una prueba válida y una no válida del modo "alterna"
+modo ="alterna"
+console.assert(cumpleReglaModo(onceCam, doceDia) === true, "alterna: 11 negro sobre 12 rojo");
+console.assert(cumpleReglaModo(onceCac, doceDia) === false, "alterna: 11 rojo sobre 12 rojo");
 //  - una prueba válida y una no válida del modo "palo"
+modo = "palo";
+console.assert(cumpleReglaModo(onceDia, doceDia) === true, "palo: 11 da sobre 12 dia");
+console.assert(cumpleReglaModo(onceCac, doceDia) === false, "palo: 11 cac sobre 12 dia");
 //  - aceptaReceptor: un 12 en un receptor vacío (aceptaReceptor(doceDia, []))
+console.assert(aceptaReceptor(doceDia, []) === true, "receptor vacío acepta 12");
 //    y un 11 en un receptor vacío.
+console.assert(aceptaReceptor(onceDia, []) === false, "receptor vacío rechaza 11");
 
 modo = null;   // ¡Al terminar, dejar el modo como al cargar la página!
 
