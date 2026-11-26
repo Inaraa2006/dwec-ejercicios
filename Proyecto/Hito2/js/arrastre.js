@@ -194,19 +194,33 @@ function alSalir(evento) {
 
 /** drop: se suelta la carta sobre el tapete. */
 function alSoltar(evento) {
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!!  empezado ***/ 
+	/***CODIGO HECHO***/ 
 	// ⚽ PELOTAS: soltar. La estructura es la misma:
 	//   1. preventDefault(); tapeteDestino = evento.currentTarget;
 	//      quitarle la clase "resaltado".
-	//   2. Recuperar la carta con el id de dataTransfer y getElementById.
-	//      Si es null, salir.
-	//   3. NUEVO: el tapete de origen es carta.parentElement
-	//   4. Si esMovimientoValido(carta, tapeteOrigen, tapeteDestino),
-	//      llamar a moverCarta(carta, tapeteOrigen, tapeteDestino).
-	//      Si no es válido, no se hace nada: la carta se queda donde estaba.
 	evento.preventDefault();
 	const tapeteDestino = evento.currentTarget;
 	tapeteDestino.classList.remove("resaltado");
+	//   2. Recuperar la carta con el id de dataTransfer y getElementById.
+	//      Si es null, salir.
+	const idCarta = evento.dataTransfer.getData("text/plain");
+	const carta = document.getElementById(idCarta);
+	if (!carta) {
+		return;
+	}
+	//   3. NUEVO: el tapete de origen es carta.parentElement
+	const tapeteOrigen = carta.parentElement;
+	//   4. Si esMovimientoValido(carta, tapeteOrigen, tapeteDestino),
+	//      llamar a moverCarta(carta, tapeteOrigen, tapeteDestino).
+	//      Si no es válido, no se hace nada: la carta se queda donde estaba.
+	if (esMovimientoValido(carta, tapeteOrigen, tapeteDestino)) {
+		moverCarta(carta, tapeteOrigen, tapeteDestino);
+	} else {
+		tapeteDestino.classList.add("error");
+		setTimeout(function () {
+			tapeteDestino.classList.remove("error");
+		}, 500);
+	}
 }
 
 
@@ -220,17 +234,18 @@ function moverCarta(carta, tapeteOrigen, tapeteDestino) {
 	// Paso 1. DATOS. La carta es la última del mazo de origen:
 	//   - sacarla de ese array        → mazoDe(tapeteOrigen).pop()
 	//   - meterla en el del destino   → mazoDe(tapeteDestino).push(carta)
-	//
+	mazoDe(tapeteOrigen).pop()
+	mazoDe(tapeteDestino).push(carta);
 	// Paso 2. PANTALLA. Como en las pelotas: tapeteDestino.appendChild(carta)
 	//   (appendChild la MUEVE: no hace falta quitarla antes del origen).
-	//
+	tapeteDestino.appendChild(carta);
 	// Paso 3. POSICIÓN. Fuera del tapete inicial no hay escalera: la carta
 	//   va encima de la anterior y centrada. Copien estas cuatro líneas:
-	//     carta.style.top = "50%";
-	//     carta.style.left = "50%";
-	//     carta.style.margin = "0";
-	//     carta.style.transform = "translate(-50%, -50%)";
-	//
+	carta.style.top = "50%";
+	carta.style.left = "50%";
+	carta.style.margin = "0";
+	carta.style.transform = "translate(-50%, -50%)";
+	
 	// Paso 4. CONTADORES (funciones de solitario.js):
 	//   - decContador del contador del origen   (contadorDe(tapeteOrigen))
 	//   - incContador del contador del destino
